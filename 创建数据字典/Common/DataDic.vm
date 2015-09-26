@@ -1,0 +1,33 @@
+﻿---------------------------数据字典生成工具($V)--------------------------------
+GO
+IF NOT EXISTS(SELECT 1 FROM sysobjects WHERE id=OBJECT_ID('[$T.Code]'))
+BEGIN
+/*==============================================================*/
+/* Table: $T.Code                                              */
+/*==============================================================*/
+CREATE TABLE [dbo].[$T.Code](
+#set($i = 1)##
+#foreach($p in $T.ListColumnInfo)##
+#if($i==$T.ListColumnInfo.Count)##   			
+#if($T.ListPkKeyInfo.COUNT==0)##
+	[$p.Code] $p.DataTypeStr #if($p.Identity)IDENTITY(1,1) #end #if($p.Nullable)NOT NULL #end #if($p.DefaultValue!="")DEFAULT $p.GetDefaultValue() #end
+#else##
+	[$p.Code] $p.DataTypeStr #if($p.Identity)IDENTITY(1,1) #end #if($p.Nullable)NOT NULL #end #if($p.DefaultValue!="")DEFAULT $p.GetDefaultValue() #end,
+	PRIMARY KEY($T.PkKeyNameList)
+#end##
+#else##
+	[$p.Code] $p.DataTypeStr #if($p.Identity)IDENTITY(1,1) #end #if($p.Nullable)NOT NULL #end #if($p.DefaultValue!="")DEFAULT $p.GetDefaultValue() #end,
+#end##				
+#set($i = 1+$i)##
+#end##
+)
+	
+
+declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', '$T.Comment','user', @CurrentUser, 'table', '$T.Code'
+#foreach($q in $T.ListColumnInfo)execute sp_addextendedproperty 'MS_Description', #if($q.Comment.Contains($q.Name)) '$q.Comment' #else '$q.Name    $q.Comment' #end,'user', @CurrentUser, 'table', '$T.Code', 'column', '$q.Code'
+#end
+
+END
+GO

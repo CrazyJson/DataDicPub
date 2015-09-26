@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "创建数据字典", "创建数据字典\创建数据字典.csproj", "{6104649E-068D-4E38-B7B2-3B9BCFA7CF7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTools.DataDic.Utils", "MyTools.DataDic.Utils\MyTools.DataDic.Utils.csproj", "{5AC41B16-23AB-441C-B17F-CA19B78FFAFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTools.Update", "MyTools.Update\MyTools.Update.csproj", "{D7933404-D3BD-4D33-90B0-AFCDE000CFCB}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "数据字典生成工具", "数据字典生成工具\数据字典生成工具.vdproj", "{320C9602-1A7F-401D-B3AE-399CB3AC2537}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "数据字典生成文档", "数据字典生成文档\数据字典生成文档.csproj", "{18813107-0F03-4B93-BCBA-2016310828F1}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6104649E-068D-4E38-B7B2-3B9BCFA7CF7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6104649E-068D-4E38-B7B2-3B9BCFA7CF7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6104649E-068D-4E38-B7B2-3B9BCFA7CF7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6104649E-068D-4E38-B7B2-3B9BCFA7CF7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AC41B16-23AB-441C-B17F-CA19B78FFAFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AC41B16-23AB-441C-B17F-CA19B78FFAFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AC41B16-23AB-441C-B17F-CA19B78FFAFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AC41B16-23AB-441C-B17F-CA19B78FFAFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7933404-D3BD-4D33-90B0-AFCDE000CFCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7933404-D3BD-4D33-90B0-AFCDE000CFCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7933404-D3BD-4D33-90B0-AFCDE000CFCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7933404-D3BD-4D33-90B0-AFCDE000CFCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{320C9602-1A7F-401D-B3AE-399CB3AC2537}.Debug|Any CPU.ActiveCfg = Debug
+		{320C9602-1A7F-401D-B3AE-399CB3AC2537}.Release|Any CPU.ActiveCfg = Release
+		{18813107-0F03-4B93-BCBA-2016310828F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18813107-0F03-4B93-BCBA-2016310828F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18813107-0F03-4B93-BCBA-2016310828F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18813107-0F03-4B93-BCBA-2016310828F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(PowerDesigner) = preSolution
+		HasSWS = 1
+	EndGlobalSection
+EndGlobal

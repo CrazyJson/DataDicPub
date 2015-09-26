@@ -1,0 +1,31 @@
+﻿---------------------------数据字典生成工具($V)--------------------------------
+#if($T.ListAddColumnInfo.Count>0)##
+#foreach($p in $T.ListAddColumnInfo)##
+GO
+IF NOT EXISTS(SELECT 1 FROM syscolumns WHERE id=OBJECT_ID('[$T.Code]') AND name='$p.Code')
+BEGIN
+	ALTER TABLE [dbo].[$T.Code] ADD [$p.Code] $p.DataTypeStr #if($p.Identity)IDENTITY(1,1) #end #if($p.Nullable)NOT NULL #end #if($p.DefaultValue!="")DEFAULT $p.GetDefaultValue() #end
+	
+	declare @CurrentUser sysname
+	select @CurrentUser = user_name()
+	execute sp_addextendedproperty 'MS_Description', #if($p.Comment.Contains($p.Name)) '$p.Comment' #else '$p.Name    $p.Comment' #end,'user', @CurrentUser, 'table', '$T.Code', 'column', '$p.Code'
+END
+GO
+#end##
+
+#end##
+
+GO
+
+
+#if($T.ListUpdateColumnInfo.Count>0)##
+GO
+-------------------以下为修改列类型或者宽度的语句，请特别注意是否需要-------------------------------
+-------------------默认情况是被注释掉的，如需放开，请按Ctrl+K，U  键放开注释------------------------
+#foreach($p in $T.ListUpdateColumnInfo)##
+--ALTER TABLE dbo.[$T.Code] ALTER COLUMN [$p.Code] $p.DataTypeStr
+#end##
+--GO
+#end##
+
+GO

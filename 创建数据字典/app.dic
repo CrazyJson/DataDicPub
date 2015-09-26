@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Config>
+  <Enabled>true</Enabled>
+  <ServerUrl>http://jason.hahuachou.com/DataDic/update.xml</ServerUrl>
+  <UpdateFileList>
+    <LocalFile path="MyTools.Update.dll" lastver="2.5" size="19000" />
+    <LocalFile path="Mysoft.Log.API.Client35.dll" lastver="2.4" size="13000" />
+    <LocalFile path="MyTools.DataDic.exe" lastver="2.5" size="78000" />
+    <LocalFile path="MyTools.DataDic.Utils.dll" lastver="2.5" size="42000" />
+    <LocalFile path="MyTools.DataDic2Doc.exe" lastver="2.3" size="154000" />
+    <LocalFile path="DocX.dll" lastver="2.0" size="267000" />
+    <LocalFile path="说明.txt" lastver="2.5" size="5000" />
+    <LocalFile path="MyTools.DataDic.exe.config"  lastver="2.5" size="4000" />
+    <LocalFile path="MyTools.DataDic2Doc.exe.config"  lastver="2.3" size="2048" />
+    <LocalFile path="测试模版\模版.docx"  lastver="1.2" size="22000" />
+    <LocalFile path="Common\DataDic.vm"  lastver="2.5" size="4000" />
+    <LocalFile path="Common\html.vm"  lastver="2.0" size="3000" />
+    <LocalFile path="Common\UpdateDic.vm"  lastver="2.5" size="4000" />
+    <LocalFile path="ErpSystem.xml"  lastver="2.0" size="1000" />
+  </UpdateFileList>
+</Config>

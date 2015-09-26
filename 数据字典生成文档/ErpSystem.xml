@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Systems>
+  <System name="销售系统" code="1" tablename="s_"  isDefault="1"/>
+  <System name="成本系统" code="2" tablename="cb_" isDefault="1"/>
+  <System name="运营系统" code="3" tablename="y_"  isDefault="1"/>
+  <System name="投资系统" code="4" tablename="tz_" isDefault="0"/>
+</Systems>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xml>
+	<sqlstrings>
+		<!--读取表信息-->
+		<sql id="GetTableInfo">
+			<![CDATA[
+	       SELECT 
+	          B.name AS table_name,
+	          A.name AS field_name,
+            TYPE_NAME(A.xtype) AS date_type ,
+	        Convert(varchar(40),NEWID()) AS TableGUID,
+            '' AS TableName,
+	        1 AS field_sequence,
+            CONVERT(VARCHAR,A.prec) AS prec,
+            ISNULL(CONVERT(VARCHAR,A.scale),'') AS scale
+          FROM syscolumns AS A 
+          INNER JOIN sys.tables AS B       
+          ON A.id=B.object_id
+          WHERE B.name IN ('{0}')
+			]]>
+		</sql>
+
+
+    <!--读取表信息-->
+    <sql id="GetDCTableInfo">
+      <![CDATA[
+	      SELECT name,object_id 
+        FROM sys.tables AS A
+        WHERE {0}
+        ORDER BY name
+			]]>
+    </sql>
+
+    <!--读取表详细信息-->
+    <sql id="GetDCTableDetailInfo">
+      <![CDATA[
+	      SELECT  T.name AS table_name ,
+        T.object_id AS TableID,
+        ISNULL(CONVERT(VARCHAR(MAX), E.value),'') AS table_name_c ,
+        C.name AS field_name ,
+        ISNULL(CONVERT(VARCHAR(MAX), D.value),'') AS field_name_c ,
+        ROW_NUMBER() OVER(PARTITION BY T.name ORDER BY C.colid) AS field_sequence ,
+        TYPE_NAME(C.xtype) AS date_type ,
+        C.prec,
+        ISNULL(C.scale,'') AS scale,
+        (CASE WHEN EXISTS ( SELECT   1
+                           FROM     sysobjects
+                           WHERE    xtype = 'PK'
+                                    AND name IN (
+                                    SELECT  name
+                                    FROM    sysindexes
+                                    WHERE   id = C.id
+                                            AND indid IN (
+                                            SELECT  indid
+                                            FROM    sysindexkeys
+                                            WHERE   id = C.id
+                                                    AND colid = C.colid ) ) )
+             THEN 1
+             ELSE 0
+        END) AS pk ,
+        ISNULL(CM.text, '') AS defaultvalue ,
+        ISNULL(C.isnullable, 1) AS isnullable ,
+        ISNULL(COLUMNPROPERTY(c.id, c.name, 'IsIdentity'), 0) AS isidentity,
+        (CASE WHEN T.modify_date=T.create_date THEN 0 ELSE 1 END) AS IsUpdate
+  FROM   sys.tables AS T
+        LEFT JOIN syscolumns AS C ON c.id = T.object_id
+        LEFT JOIN syscomments CM ON c.cdefault = CM.id
+        LEFT JOIN sys.extended_properties AS D ON D.major_id = T.object_id
+                                                  AND D.minor_id = C.colid
+                                                  AND D.major_id = C.id
+        LEFT JOIN sys.extended_properties AS E ON E.major_id = T.object_id
+                                                  AND E.minor_id = 0
+   
+ WHERE T.object_id IN ({0})                                                                          
+			]]>
+    </sql>
+	</sqlstrings>
+</xml>
